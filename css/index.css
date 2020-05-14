@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    font: 14px/1.6 "Yu Gothic UI","ＭＳ Ｐゴシック","MS PGothic",Verdana,Arial,sans-serif;
+    margin: 0;
+    color: #313131;
+    animation: fadeIn 3s ease 0s 1 normal;
+    -webkit-animation: fadeIn 3s ease 0s 1 normal;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+#background-contents {
+    background-color: #000000;
+    background-image: url("../index_backgroundimg.png");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: cover;
+    filter: hue-rotate(0deg); /* Dynamic columns */
+    height: 100vh;
+}
+
+#front-contents {
+    color: #f0f8ff;
+    font-style: italic;
+    line-height: 2.5;
+    text-align: right;
+    padding-top: 460px;
+}
+
+#front-contents a:link {
+    color: #00ffff;
+}
+
+#front-contents a:visited {
+    color: #a0522d;
+}
+
+#front-contents a:hover {
+    color: #fa8072;
+}
+
+#front-contents a:active {
+    color: #f0f8ff;
+}
+
+.chip1 {
+    padding-right: 200px;
+}
+
+.chip2 {
+    padding-right: 225px;
+}
+
+.chip3 {
+    padding-top: 40px;
+    padding-right: 275px;
+}
+
+.chip4 {
+    padding-right: 300px;
+}

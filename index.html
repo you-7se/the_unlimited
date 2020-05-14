@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>無限なる思想 - UNLIMITED LOOP "SQUARE ROOT 1"</title>
+        <link rel="stylesheet" href="css/ress.css" type="text/css">
+        <link rel="stylesheet" href="css/index.css" type="text/css">
+
+    </head>
+    <body>
+        <div id="background-contents">
+            <div id="front-contents">
+                <p class="chip1"><a href="0000/power.html">No.0000 - 広報室</a></p>
+                <p class="chip2"><a href="1000/gaia.html">No.1000 - 無限なる思想</a></p>
+                <p class="chip3"><a href="10000/deusexmachina.html">No.10000 - プログラミング</a></p>
+                <p class="chip4"><a href="20000/prophet.html">No.20000 - ライトノベル集</a></p>
+
+            </div>
+        </div>
+
+        <script>
+            var bg_img = document.getElementById('background-contents');
+            var rotate_randval = Math.floor(Math.random() * 360);
+            var hue_rotate_val = "hue-rotate(" + String(rotate_randval) + "deg)";
+            bg_img.style.filter = hue_rotate_val;
+        </script>
+    </body>
+</html>
