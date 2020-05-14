@@ -13,7 +13,7 @@
         <div class="bg">
             <div class="header-contents">
                 <div class="header-area">
-                    <h1 class="blog-title">Sirius X</h1>
-                    <p class ="blog-expl">需要無視の自己満足ブログです。</p>
+                    <h1 class="blog-title"><?php bloginfo('name'); ?></h1>
+                    <p class ="blog-expl"><?php bloginfo('description'); ?></p>
                 </div>
             </div>

@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    font: 14px/1.6 "Meiryo UI","ＭＳ Ｐゴシック","MS PGothic",Verdana,Arial,sans-serif;
+    font: 16px/1.6 "Meiryo UI","ＭＳ Ｐゴシック","MS PGothic",Verdana,Arial,sans-serif;
     color: #313131;
     min-height: 100vh;
     background-color: rgba(0, 0, 32, 0.7);
@@ -55,9 +55,16 @@ h3 {
     font: 600 14px/3.0;
 }
 
-p {
-    font-size: 12px;
-    line-height: 1.75;
+ol {
+    list-style-position: inside;
+}
+
+.fc-white {
+    color: #f0f8ff;
+}
+
+.borderline {
+    border: solid 1px;
 }
 
 .header-contents {
@@ -102,7 +109,7 @@ p {
 
 .singles {
     color: #f0f8ff;
-    font-size: 12px;
+    font-size: 18px;
     font-family: "Yu Gothic UI";
     background-color: rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
@@ -111,7 +118,6 @@ p {
 
 .singles ul {
     font-style: italic;
-    font-size: 12px;
     margin: 10px 15px;
     border: 1px solid;
     list-style-type: disc;
@@ -123,7 +129,7 @@ p {
     line-height: 1.5;
 }
 
-.singles .entry-title {
+.entry-area .singles .entry-title {
     font-size: 14px;
     text-align: left;
     line-height: 1;
@@ -149,6 +155,7 @@ p {
     font-style: italic;
     font-weight: normal;
     font-family: "Century Gothic";
+    text-align: left;
     padding-left: 2px;
     margin-top: 3px;
 }
@@ -158,26 +165,51 @@ p {
     padding-left: 4px;
     padding-right: 4px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.entry .fw-bold {
+.entry-area .entry p {
+    font-size: 14px;
+    line-height: 1.5;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.comment-title {
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.comment-respond {
+    font-size: 14px;
+}
+
+.comment-respond .comment-form .comment-form-comment label[for="comment"]::after {
+    content: "\A";
+    white-space: pre;
+}
+
+.comment-respond .comment-form .comment-form-comment textarea {
+    color: #f0f8ff;
+    padding: 2px;
+    border-style: solid;
+}
+
+.comment-respond .comment-form input.submit {
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 1em;
+    text-decoration: none;
+    color: #f0f8ff;
+    background: #111111;   /* ボタンの色 */
+    border: solid 1.5px #f0f8ff;   /* ボタンの枠の色 */
+    border-radius: 4px;   /* ボタンの角の丸み */
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
     font-weight: bold;
 }
 
-.entry .fc-red {
-    color: #ff0000;
-}
-
-.entry .fs-up1 {
-    font-size: 1.2em;
-}
-
-.entry .fs-up2 {
-    font-size: 1.3em;
-}
-
-.entry .fs-up3 {
-    font-size: 1.5em;
+.comment-respond .comment-form input.submit:active {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 .item-area {
@@ -217,4 +249,52 @@ p {
 
 .item-category .child-category::before {
     content: "　　»";
+}
+
+.footer-contents {
+    color: #f0f8ff;
+    text-align: center;
+    font-size: 12px;
+    clear: both;
+    height: 200px;
+    background-color: rgba(10, 0, 10, 0.5);
+    padding-top: 100px;
+}
+
+.copyrights::before {
+    content: "©";
+}
+
+/* front-page.php 用 */
+.main-area {
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 100px;
+}
+
+.main-area .singles .entry-title {
+    font-size: 20px;
+    text-align: left;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+}
+
+.main-area .singles .entry {
+    text-align: left;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 20px;
+}
+
+.main-area .singles .entry p {
+    font-size: 14px;
+    line-height: 1.5;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
