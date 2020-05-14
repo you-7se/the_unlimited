@@ -1,0 +1,220 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    font: 14px/1.6 "Meiryo UI","ＭＳ Ｐゴシック","MS PGothic",Verdana,Arial,sans-serif;
+    color: #313131;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 32, 0.7);
+    background-image: url("../power_backgroundimg.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    margin: 0;
+    animation: fadeIn 3s ease 0s 1 normal;
+    -webkit-animation: fadeIn 3s ease 0s 1 normal;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+a:link {
+    color: #00ffff;
+}
+
+a:visited {
+    color: #a0522d;
+}
+
+a:hover {
+    color: #fa8072;
+}
+
+a:active {
+    color: #f0f8ff;
+}
+
+h2 {
+    font: 600 16px/2.0;
+}
+
+h3 {
+    font: 600 14px/3.0;
+}
+
+p {
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+.header-contents {
+    color: #f0f8ff;
+    text-align: center;
+    background-color: rgba(30, 0, 30, 0.5);
+    background-image: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 1px,
+        rgba(30, 191, 255, 0.1) 2px,
+        rgba(0, 0, 60, 0.3) 4px
+    );
+    padding-top: 200px;
+    padding-bottom: 100px;
+    top: 0;
+    position: relative;
+}
+
+.header-contents .blog-title {
+    font: 600 18px/3.0 'Times New Roman';
+}
+
+.header-contents .blog-expl {
+    font: 300 11px/3.0 sans-serif;
+}
+
+#MainBlock {
+    text-align: center;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.entry-area {
+    text-align: left;
+    float: left;
+    margin-top: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 100px;
+    width: 65%;
+}
+
+.singles {
+    color: #f0f8ff;
+    font-size: 12px;
+    font-family: "Yu Gothic UI";
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.singles ul {
+    font-style: italic;
+    font-size: 12px;
+    margin: 10px 15px;
+    border: 1px solid;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.singles li {
+    padding: 8px 15px;
+    line-height: 1.5;
+}
+
+.singles .entry-title {
+    font-size: 14px;
+    text-align: left;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.singles .entry-data {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 10px;
+    text-align: right;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+}
+
+.singles .entry-datetimes {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: normal;
+    font-family: "Century Gothic";
+    padding-left: 2px;
+    margin-top: 3px;
+}
+
+.singles .entry {
+    text-align: left;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 20px;
+}
+
+.entry .fw-bold {
+    font-weight: bold;
+}
+
+.entry .fc-red {
+    color: #ff0000;
+}
+
+.entry .fs-up1 {
+    font-size: 1.2em;
+}
+
+.entry .fs-up2 {
+    font-size: 1.3em;
+}
+
+.entry .fs-up3 {
+    font-size: 1.5em;
+}
+
+.item-area {
+    text-align: left;
+    float: right;
+    margin-top: 50px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 33%;
+    position: relative;
+}
+
+.item-category {
+    color: #f0f8ff;
+    font-size: 7px;
+    font-weight: bold;
+    font-family: "メイリオ";
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.item-category .item-title {
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    border-bottom: thin solid #f0f8ff;
+}
+
+.item-category .parent-category {
+    line-height: 2.0;
+}
+
+.item-category .child-category {
+    line-height: 2.0;
+}
+
+.item-category .child-category::before {
+    content: "　　»";
+}
