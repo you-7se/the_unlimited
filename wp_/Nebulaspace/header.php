@@ -17,3 +17,8 @@
                     <p class ="blog-expl"><?php bloginfo('description'); ?></p>
                 </div>
             </div>
+            
+            <div class="breads">
+                <?php mytheme_breadcrumb(); ?>
+            </div>
+            

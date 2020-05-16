@@ -36,7 +36,7 @@ a:link {
 }
 
 a:visited {
-    color: #a0522d;
+    color: #f8b239;
 }
 
 a:hover {
@@ -89,6 +89,16 @@ ol {
 
 .header-contents .blog-expl {
     font: 300 11px/3.0 sans-serif;
+}
+
+/* パンくずリスト */
+.breads {
+    color: #f0f8ff;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 230px;
+    margin-right: 230px;
+    margin-bottom: 10px;
 }
 
 #MainBlock {
@@ -166,6 +176,14 @@ ol {
     padding-right: 4px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.entry-area .entry h2 {
+    font-size: 25px;
+}
+
+.entry-area .entry h3 {
+    font-size: 20px;
 }
 
 .entry-area .entry p {
@@ -254,11 +272,12 @@ ol {
 .footer-contents {
     color: #f0f8ff;
     text-align: center;
+    line-height: 2.0em;
     font-size: 12px;
     clear: both;
-    height: 200px;
+    height: 100px;
     background-color: rgba(10, 0, 10, 0.5);
-    padding-top: 100px;
+    padding-top: 25px;
 }
 
 .copyrights::before {
@@ -268,7 +287,6 @@ ol {
 /* front-page.php 用 */
 .main-area {
     text-align: left;
-    margin-top: 30px;
     margin-left: 80px;
     margin-right: 80px;
     margin-bottom: 100px;
@@ -297,4 +315,9 @@ ol {
     line-height: 1.5;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+/* page.php 用 */
+.page-title {
+    padding-bottom: 30px;
 }
