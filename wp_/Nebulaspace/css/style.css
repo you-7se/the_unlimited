@@ -94,23 +94,35 @@ ol {
 /* パンくずリスト */
 .breads {
     color: #f0f8ff;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 10px;
-    margin-left: 230px;
-    margin-right: 230px;
+    margin-left: 160px;
+    margin-right: 160px;
     margin-bottom: 10px;
+}
+
+#breadcrumbs ul {
+	width: 100%;
+    font-size: 13px;
+	text-align: left;
+}
+
+#breadcrumbs ul li {
+	display: inline-block;
+	vertical-align: top;
 }
 
 #MainBlock {
     text-align: center;
     margin-left: 150px;
     margin-right: 150px;
+    margin-bottom: 50px;
 }
 
 .entry-area {
     text-align: left;
     float: left;
-    margin-top: 50px;
+    margin-top: 0;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 100px;
@@ -140,6 +152,16 @@ ol {
 }
 
 .entry-area .singles .entry-title {
+    font-size: 18px;
+    text-align: left;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.entry-area .singles .search_results {
     font-size: 14px;
     text-align: left;
     line-height: 1;
@@ -233,12 +255,42 @@ ol {
 .item-area {
     text-align: left;
     float: right;
-    margin-top: 50px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0;
+    margin-bottom: 100px;
     width: 33%;
     position: relative;
+}
+
+.item-search {
+    color: #f0f8ff;
+    font-size: 7px;
+    font-weight: bold;
+    font-family: "メイリオ";
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.item-search #form {
+    position: relative;
+}
+
+.item-search #s-box {
+    color: #f0f8ff;
+    height: auto;
+    width: 80%;
+    border: solid 1px;
+}
+
+.item-search #s-btn-area {
+    margin-left: 2px;
+    height: auto;
+    width: 18%;
+    background: #111111;   /* ボタンの色 */
+    border: solid 1.5px #f0f8ff;   /* ボタンの枠の色 */
+    border-radius: 4px;   /* ボタンの角の丸み */
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
 }
 
 .item-category {
@@ -249,24 +301,34 @@ ol {
     text-align: left;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
+    margin-bottom: 20px;
 }
 
-.item-category .item-title {
+.item-title {
+    color: #ffcc33;
     margin-bottom: 10px;
     padding-bottom: 3px;
     border-bottom: thin solid #f0f8ff;
 }
 
-.item-category .parent-category {
+.item-category ul {
     line-height: 2.0;
+    list-style-type: none;
+    list-style-position: inside;
 }
 
-.item-category .child-category {
+.item-category ul.children li.cat-item {
     line-height: 2.0;
+    list-style-type: none;
+    list-style-position: inside;
 }
 
-.item-category .child-category::before {
-    content: "　　»";
+.item-category ul.children li.cat-item::before {
+    content: "　» ";
+}
+
+.item-category ul.children ul.children li.cat-item::before {
+    content: "　　 -» ";
 }
 
 .footer-contents {

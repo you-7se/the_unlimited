@@ -1,110 +1,49 @@
 <?php get_header(); ?>
 
             <div id="MainBlock">
-                <div class="entry-area">
+                <div class="main-area">
                     <div class="singles">
-                        <h2 class="entry-title">エントリータイトル“１”</h2>
-                        <h2 class="entry-data">Category：雑記　Comment：0</h2>
-                        <h3 class="entry-datetimes">2020-01-01 12:30:00 posted.</h3>
+                        <h2 class="entry-title"><?php the_title(); ?></h2>
                         <div class="entry">
-                            <p>Hello,World!!</p>
-                            <p>日本語の表示<br>改行します。Carriage Return & Line Feed</p>
-                            <p class="fw-bold">太字です。</p>
-                            <p class="fc-red">赤字です。#ff0000。</p>
-                            <p class="fs-up1">文字サイズを一段階上げます。</p>
-                            <p class="fs-up2">文字サイズを二段階上げます。</p>
-                            <p class="fs-up3">文字サイズを三段階上げます。</p>
-                            <p class="fw-bold fc-red fs-up3">赤字 + 太字 + 文字サイズ拡大です。</p>
-                            <ul>
-                                <li>ブログの体裁を整える</li>
-                                <li>ヘッダとフッタのスタイルを考える</li>
-                                <li>全体のデザインを調整する<br>　（見栄えを優先したレイアウト変更）</li>
-                            </ul>
+                            <!-- ここから記事本文 -->
+                            <?php if( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                                <?php the_content(); ?>
+                            <?php endwhile; endif; ?>
+                            
                         </div>
                     </div>
+                    <div class="fc-white">
+                        <p>最近投稿された記事</p>
+                    </div>
+                    <?php
+                      $args = array(
+                        'posts_per_page' => 5  // 表示する記事の最大数
+                      );
+                      $posts = get_posts( $args );
+                      foreach ( $posts as $post ):
+                      setup_postdata( $post );
+                      // カテゴリの取得
+                      $html_category = '';
+                      $separator = ', ';
+                      $categories = get_the_category();
+                      foreach ( $categories as $category ) {
+                        $html_category .= '<span><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></span>' . $separator;
+                      }
+                      $html_category = rtrim( $html_category, $separator );
+                    ?>
                     <div class="singles">
-                        <h2 class="entry-title">エントリータイトル“２”</h2>
-                        <h2 class="entry-data">Category：雑記　Comment：0</h2>
-                        <h3 class="entry-datetimes">2020-01-01 12:30:00 posted.</h3>
+                        <h2 class="entry-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h2>
+                        <h2 class="entry-data">Category：<?php echo $html_category; ?>　Comment：<a href="<?php comments_link(); ?>"><?php echo get_comments_number(); ?></a></h2>
+                        <h3 class="entry-datetimes"><?php the_time('Y-m-d H:i:s'); ?> posted.</h3>
                         <div class="entry">
-                            <p>Hello,World!!</p>
-                            <p>日本語の表示<br>改行します。Carriage Return & Line Feed</p>
-                            <p class="fw-bold">太字です。</p>
-                            <p class="fc-red">赤字です。#ff0000。</p>
-                            <p class="fs-up1">文字サイズを一段階上げます。</p>
-                            <p class="fs-up2">文字サイズを二段階上げます。</p>
-                            <p class="fs-up3">文字サイズを三段階上げます。</p>
-                            <p class="fw-bold fc-red fs-up3">赤字 + 太字 + 文字サイズ拡大です。</p>
-                            <ul>
-                                <li>ブログの体裁を整える</li>
-                                <li>ヘッダとフッタのスタイルを考える</li>
-                                <li>全体のデザインを調整する<br>　（見栄えを優先したレイアウト変更）</li>
-                            </ul>
+                            <!-- ここから記事本文 -->
+                            <a href="<?php echo get_permalink(); ?>"><?php the_excerpt(); ?></a>
                         </div>
                     </div>
-                    <div class="singles">
-                        <h2 class="entry-title">エントリータイトル“３”</h2>
-                        <h2 class="entry-data">Category：雑記　Comment：0</h2>
-                        <h3 class="entry-datetimes">2020-01-01 12:30:00 posted.</h3>
-                        <div class="entry">
-                            <p>Hello,World!!</p>
-                            <p>日本語の表示<br>改行します。Carriage Return & Line Feed</p>
-                            <p class="fw-bold">太字です。</p>
-                            <p class="fc-red">赤字です。#ff0000。</p>
-                            <p class="fs-up1">文字サイズを一段階上げます。</p>
-                            <p class="fs-up2">文字サイズを二段階上げます。</p>
-                            <p class="fs-up3">文字サイズを三段階上げます。</p>
-                            <p class="fw-bold fc-red fs-up3">赤字 + 太字 + 文字サイズ拡大です。</p>
-                            <ul>
-                                <li>ブログの体裁を整える</li>
-                                <li>ヘッダとフッタのスタイルを考える</li>
-                                <li>全体のデザインを調整する<br>　（見栄えを優先したレイアウト変更）</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="singles">
-                        <h2 class="entry-title">エントリータイトル“４”</h2>
-                        <h2 class="entry-data">Category：雑記　Comment：0</h2>
-                        <h3 class="entry-datetimes">2020-01-01 12:30:00 posted.</h3>
-                        <div class="entry">
-                            <p>Hello,World!!</p>
-                            <p>日本語の表示<br>改行します。Carriage Return & Line Feed</p>
-                            <p class="fw-bold">太字です。</p>
-                            <p class="fc-red">赤字です。#ff0000。</p>
-                            <p class="fs-up1">文字サイズを一段階上げます。</p>
-                            <p class="fs-up2">文字サイズを二段階上げます。</p>
-                            <p class="fs-up3">文字サイズを三段階上げます。</p>
-                            <p class="fw-bold fc-red fs-up3">赤字 + 太字 + 文字サイズ拡大です。</p>
-                            <ul>
-                                <li>ブログの体裁を整える</li>
-                                <li>ヘッダとフッタのスタイルを考える</li>
-                                <li>全体のデザインを調整する<br>　（見栄えを優先したレイアウト変更）</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="singles">
-                        <h2 class="entry-title">エントリータイトル“５”</h2>
-                        <h2 class="entry-data">Category：雑記　Comment：0</h2>
-                        <h3 class="entry-datetimes">2020-01-01 12:30:00 posted.</h3>
-                        <div class="entry">
-                            <p>Hello,World!!</p>
-                            <p>日本語の表示<br>改行します。Carriage Return & Line Feed</p>
-                            <p class="fw-bold">太字です。</p>
-                            <p class="fc-red">赤字です。#ff0000。</p>
-                            <p class="fs-up1">文字サイズを一段階上げます。</p>
-                            <p class="fs-up2">文字サイズを二段階上げます。</p>
-                            <p class="fs-up3">文字サイズを三段階上げます。</p>
-                            <p class="fw-bold fc-red fs-up3">赤字 + 太字 + 文字サイズ拡大です。</p>
-                            <ul>
-                                <li>ブログの体裁を整える</li>
-                                <li>ヘッダとフッタのスタイルを考える</li>
-                                <li>全体のデザインを調整する<br>　（見栄えを優先したレイアウト変更）</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-area">
-                    <?php get_sidebar(); ?>
+                    <?php
+                      endforeach;
+                      wp_reset_postdata(); // 直前のクエリを復元する
+                    ?>                   
                 </div>
             </div>
 

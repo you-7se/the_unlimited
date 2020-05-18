@@ -19,6 +19,6 @@
             </div>
             
             <div class="breads">
-                <?php mytheme_breadcrumb(); ?>
+                <?php breadcrumbs(); ?>
             </div>
             

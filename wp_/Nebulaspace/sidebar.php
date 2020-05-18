@@ -1,4 +1,9 @@
-<div class="item-category">
+<div class="item-search">
+    <p class="item-title">Webサイト内検索</p>
+    <?php get_search_form(); ?>
+</div>
+
+<!--
     <h2 class="item-title">カテゴリ一覧</h2>
     <p class="parent-category">お知らせ</p>
     <p class="child-category">更新情報</p>
@@ -7,7 +12,7 @@
     <p class="child-category">お金・投資学</p>
     <p class="child-category">倫理観・法学</p>
     <p class="child-category">数学・解析学</p>
-    <p class="child-category">生命・自然学</p> <!-- ＋栄養管理 -->
+    <p class="child-category">生命・自然学</p>＋栄養管理
     <p class="child-category">国家・世界・統制</p>
     <p class="child-category">文明・情報社会</p>
     <p class="parent-category">経済／時事</p>
@@ -31,4 +36,10 @@
     <p class="child-category">YouTube</p>
     <p class="child-category">オンライン通信販売</p>
     <p class="child-category">パソコン雑学</p>
-</div>
+-->
+
+<?php if ( is_active_sidebar('sidebar-1') ) : ?>
+  <ul class="menu">
+    <?php dynamic_sidebar('sidebar-1'); ?>
+  </ul>
+<?php endif; ?>
