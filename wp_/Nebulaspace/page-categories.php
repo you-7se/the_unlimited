@@ -16,9 +16,12 @@
                         <div class="singles">
                             <h2 class="entry-title page-title"><?php the_title(); ?></h2>
                             <h3 class="entry-datetimes"><?php the_time('Y-m-d H:i:s'); ?> posted.</h3>
-                            <div class="entry">
+                            <div class="entry item-category">
                                 <!-- ここから記事本文 -->
-                                <?php the_content(); ?>
+                                <?php 
+                                  the_content();
+                                  wp_list_categories('title_li=&show_count=1&use_desc_for_title=1&depth=0&style=list');
+                                ?>
                             </div>
                             <div class="borderline"></div>
                             <div class="comment-title">

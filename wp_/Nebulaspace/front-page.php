@@ -2,14 +2,21 @@
 
             <div id="MainBlock">
                 <div class="main-area">
+                    <div class="main-menu-links">
+                        <p class="main-menu-bounce"><a href="<?php echo get_page_link( 10 ); ?>">記事一覧</a></p>
+                        <p class="main-menu-bounce"><a href="<?php echo get_page_link( 53 ); ?>">カテゴリ一覧</a></p>
+                        <p class="main-menu-bounce"><a href="<?php echo get_page_link( 3 ); ?>">プライバシーポリシー</a></p>
+                        <p class="main-menu-bounce"><a href="<?php echo get_page_link( 9 ); ?>">お問い合わせ</a></p>                        
+                    </div>
+                    <div class="clear-floating"></div>
                     <div class="singles">
                         <h2 class="entry-title"><?php the_title(); ?></h2>
                         <div class="entry">
                             <!-- ここから記事本文 -->
                             <?php if( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+                                <?php the_post_thumbnail( array( 600, 600 ) ); ?>
                                 <?php the_content(); ?>
                             <?php endwhile; endif; ?>
-                            
                         </div>
                     </div>
                     <div class="fc-white">

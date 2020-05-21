@@ -4,6 +4,7 @@
                 <div class="main-area">
                     <div class="singles">
                         <h2 class="entry-title"><?php the_title(); ?></h2>
+                        <h2 class="entry-data">Category：<?php echo get_post_category_link( get_the_ID() ); ?>　Comment：<a href="<?php comments_link(); ?>"><?php echo get_comments_number(); ?></a></h2>
                         <div class="entry">
                             <!-- ここから記事本文 -->
                             <?php if( have_posts() ) : while ( have_posts() ) : the_post(); ?>

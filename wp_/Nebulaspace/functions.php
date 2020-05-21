@@ -44,7 +44,8 @@ function breadcrumbs( $args = array() ){
 	$defaults = array(
 		'id' => "breadcrumbs",
 		'home' => "Top",
-		'search' => "で検索した結果",
+        'whatsnew' => "記事一覧",
+		'search' => "で検索した結果",
 		'tag' => "タグ",
 		'author' => "投稿者",
 		'notfound' => "404 Not found",
@@ -54,7 +55,7 @@ function breadcrumbs( $args = array() ){
 	$args = wp_parse_args( $args, $defaults );
 	extract( $args, EXTR_SKIP );
 		if( is_home() ) {
-		echo  '<div id="'. $id .'" >'.'<ul><li>'. $home .'</li></ul></div>';
+		echo  '<div id="'. $id .'" >'.'<ul><li class="breadcrumb-top" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="'. home_url() .'/" itemprop="url"><span itemprop="title">'. $home .'</span></a></li><li>'.$separator.'</li><li>' . $whatsnew . '</li></ul></div>';
 		}
 
 		if( !is_home() && !is_admin() ){
@@ -250,4 +251,36 @@ function get_youngest_tax( $taxes, $mytaxonomy ){
 		}
 	}
 	return $youngest;
+}
+
+// アイキャッチ画像を有効にする。
+add_theme_support('post-thumbnails');
+
+register_post_type(
+    'event',
+    // 'supports'に'thumbnail'を追記
+    array('supports' => array('title','editor','thumbnail'))
+);
+
+/* カンマ区切りでカテゴリーリンクを表示する関数 */
+function get_post_category_link($post_id) {
+    //カテゴリーリスト
+    $my_cats = get_the_category($post_id);
+      
+    if ($my_cats) {
+      
+        $cats_cnt = 0;
+        foreach ($my_cats as $my_cat) {
+              
+            if ($cats_cnt > 0) {
+                echo ', ';
+            }
+  
+            $cat_link = get_category_link($my_cat->cat_ID);
+  
+            echo '<a href="' . $cat_link . '">' . $my_cat->name .'</a>';
+              
+            $cats_cnt++;
+        }
+    } 
 }

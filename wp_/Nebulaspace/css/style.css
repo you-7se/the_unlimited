@@ -126,7 +126,34 @@ ol {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 100px;
-    width: 65%;
+    width: 70%;
+}
+
+.main-menu-links {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.main-menu-links .main-menu-bounce {
+    color: #f0f8ff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 1px,
+        rgba(30, 191, 255, 0.1) 2px,
+        rgba(0, 0, 60, 0.3) 4px
+    );
+    margin: 11px 0;
+    padding: 10px 5px;
+    width: 25%;
+    float: left;
+}
+
+.clear-floating {
+    clear: left;
 }
 
 .singles {
@@ -256,13 +283,13 @@ ol {
     text-align: left;
     float: right;
     margin-bottom: 100px;
-    width: 33%;
+    width: 28%;
     position: relative;
 }
 
 .item-search {
     color: #f0f8ff;
-    font-size: 7px;
+    font-size: 12px;
     font-weight: bold;
     font-family: "メイリオ";
     text-align: left;
@@ -295,7 +322,7 @@ ol {
 
 .item-category {
     color: #f0f8ff;
-    font-size: 7px;
+    font-size: 12px;
     font-weight: bold;
     font-family: "メイリオ";
     text-align: left;
@@ -315,6 +342,7 @@ ol {
     line-height: 2.0;
     list-style-type: none;
     list-style-position: inside;
+    border-style: none;
 }
 
 .item-category ul.children li.cat-item {
@@ -328,7 +356,12 @@ ol {
 }
 
 .item-category ul.children ul.children li.cat-item::before {
-    content: "　　 -» ";
+    content: "　　 »» ";
+}
+
+/* カテゴリー一覧固定ぺージ用の特殊スタイル */
+.entry.item-category {
+    font-size: 15px;
 }
 
 .footer-contents {
