@@ -1,36 +1,41 @@
 <?php get_header(); ?>
-
-            <div id="MainBlock">
-                <div class="entry-area">
-                    <?php 
-                      if( have_posts() ) : while ( have_posts() ) : the_post();
-                      // カテゴリの取得
-                      $html_category = '';
-                      $separator = ', ';
-                      $categories = get_the_category();
-                      foreach ( $categories as $category ) {
-                        $html_category .= '<span><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></span>' . $separator;
-                      }
-                      $html_category = rtrim( $html_category, $separator );
-                    ?>
-                        <div class="singles">
-                            <h2 class="entry-title page-title"><?php the_title(); ?></h2>
-                            <h3 class="entry-datetimes"><?php the_time('Y-m-d H:i:s'); ?> posted.</h3>
-                            <div class="entry">
-                                <!-- ここから記事本文 -->
-                                <?php the_content(); ?>
-                            </div>
-                            <div class="borderline"></div>
-                            <div class="comment-title">
-                                <?php comments_template(); ?>
-                            </div>
-                        </div>
-                    <?php endwhile; endif; ?>
+            
+        <div id="mainContents" class="main-contents">
+            <!-- 左カラム・コンテンツ -->
+            <div id="mainContainer" class="entry-area">
+                <?php
+                    // 投稿の取得を試す
+                    if ( have_posts() ) : 
+                        while ( have_posts() ) :
+                            // 記事の取得
+                            the_post(); 
+                            
+                            // 更新日時の取得
+                            $post_id = get_the_ID();
+                            $updated_date = the_last_updated_for_entry( $post_id );
+                ?>
+                <div class="singles">
+                    <h2 class="entry-title page-title"><?php the_title(); ?></h2>
+                    <h3 class="entry-datetimes"><?php the_time('Y-m-d H:i:s'); ?> posted.</h3>
+                    <h3 class="entry-datetimes"><?php echo $updated_date; ?></h3>
+                    <!-- ソーシャルシェアリンク集 -->
+                    <?php include("snslink.php"); ?>
+                    <div class="entry">
+                        <!-- ここから記事本文 -->
+                        <?php the_content(); ?>
+                    </div>
+                </div>
+                <?php
+                        endwhile;
                         
-                </div>
-                <div class="item-area">
-                    <?php get_sidebar(); ?>
-                </div>
+                    endif;
+                ?>
             </div>
+            
+            <!-- 右カラム・メニューバー -->
+            <div id="subContainer" class="item-area">
+                <?php get_sidebar(); ?>
+            </div>
+        </div>
 
 <?php get_footer(); ?>

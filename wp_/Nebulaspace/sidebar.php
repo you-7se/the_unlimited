@@ -1,4 +1,4 @@
-<div class="item-search">
+<div class="item-search item-box">
     <p class="item-title">Webサイト内検索</p>
     <?php get_search_form(); ?>
 </div>

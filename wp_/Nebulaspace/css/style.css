@@ -1,16 +1,19 @@
 @charset "utf-8";
 /* CSS Document */
 
+/* ==============================================
+   ■ Public cascading columns
+================================================ */
 html {
     min-height: 100vh;
 }
 
 body {
     font: 16px/1.6 "Meiryo UI","ＭＳ Ｐゴシック","MS PGothic",Verdana,Arial,sans-serif;
-    color: #313131;
+    color: #f0f8ff;
     min-height: 100vh;
     background-color: rgba(0, 0, 32, 0.7);
-    background-image: url("../power_backgroundimg.jpg");
+    background-image: url("../image/power_backgroundimg.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
@@ -44,7 +47,7 @@ a:hover {
 }
 
 a:active {
-    color: #f0f8ff;
+    color: #f8b239;
 }
 
 h2 {
@@ -59,14 +62,32 @@ ol {
     list-style-position: inside;
 }
 
+
+
+
+
+/* ==============================================
+   ■ Public element CSS parts
+================================================ */
 .fc-white {
     color: #f0f8ff;
 }
 
-.borderline {
+.horizontal-rule {
     border: solid 1px;
 }
 
+.clear-floating {
+    clear: both;
+}
+
+
+
+
+
+/* ==============================================
+   ■ header area cascading styles
+================================================ */
 .header-contents {
     color: #f0f8ff;
     text-align: center;
@@ -83,6 +104,11 @@ ol {
     position: relative;
 }
 
+.header-contents.fixed {
+    margin-top: 51px;
+    z-index: 0;
+}
+
 .header-contents .blog-title {
     font: 600 18px/3.0 'Times New Roman';
 }
@@ -91,35 +117,91 @@ ol {
     font: 300 11px/3.0 sans-serif;
 }
 
-/* パンくずリスト */
+.navigation-menu-bar {
+    /* undefined */
+}
+
+/*  グローバルナビカスタマイズで使用 (ナビを固定する)  */
+.navigation-menu-bar.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.navigation-menu-bar.fixed-admin {
+    position: fixed;
+    top: 32px;
+    width: 100%;
+    z-index: 10;
+}
+
+.navigation-menu-bar .menu-usability-link-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 1px,
+        rgba(30, 191, 255, 0.1) 2px,
+        rgba(0, 0, 60, 0.3) 4px
+    );
+    padding: 0 150px;
+}
+
+.navigation-menu-bar .menu-usability-link-container ul.menu {
+    color: #f0f8ff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navigation-menu-bar .menu-usability-link-container ul.menu li.menu-item {
+    padding: 10px 13px;  /* 2番目の値がナビゲーションメニュー各項目の隙間の幅 */
+	display: inline-block;
+}
+
+
+
+
+
+/* ==============================================
+   ■ パンくずリスト cascading styles
+================================================ */
 .breads {
     color: #f0f8ff;
     font-size: 13px;
-    margin-top: 10px;
-    margin-left: 160px;
-    margin-right: 160px;
-    margin-bottom: 10px;
+    margin: 10px auto;
+    width: 960px;
 }
 
-#breadcrumbs ul {
+.breads ul {
 	width: 100%;
     font-size: 13px;
 	text-align: left;
 }
 
-#breadcrumbs ul li {
+.breads ul li {
 	display: inline-block;
 	vertical-align: top;
 }
 
-#MainBlock {
+
+
+
+
+/* ==============================================
+   ■ Main container cascading styles
+================================================ */
+.main-contents {
     text-align: center;
-    margin-left: 150px;
-    margin-right: 150px;
-    margin-bottom: 50px;
+    margin: 10px auto;
+    width: 1010px;
 }
 
-.entry-area {
+
+/* **************************
+   □ entry-area styles 
+**************************** */
+.main-contents .entry-area {
     text-align: left;
     float: left;
     margin-top: 0;
@@ -129,34 +211,7 @@ ol {
     width: 70%;
 }
 
-.main-menu-links {
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-.main-menu-links .main-menu-bounce {
-    color: #f0f8ff;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    background-image: repeating-linear-gradient(45deg,
-        transparent,
-        transparent 1px,
-        rgba(30, 191, 255, 0.1) 2px,
-        rgba(0, 0, 60, 0.3) 4px
-    );
-    margin: 11px 0;
-    padding: 10px 5px;
-    width: 25%;
-    float: left;
-}
-
-.clear-floating {
-    clear: left;
-}
-
-.singles {
+.main-contents .entry-area .singles {
     color: #f0f8ff;
     font-size: 18px;
     font-family: "Yu Gothic UI";
@@ -165,20 +220,7 @@ ol {
     padding: 10px;
 }
 
-.singles ul {
-    font-style: italic;
-    margin: 10px 15px;
-    border: 1px solid;
-    list-style-type: disc;
-    list-style-position: inside;
-}
-
-.singles li {
-    padding: 8px 15px;
-    line-height: 1.5;
-}
-
-.entry-area .singles .entry-title {
+.main-contents .entry-area .singles .entry-title {
     font-size: 18px;
     text-align: left;
     line-height: 1;
@@ -188,7 +230,21 @@ ol {
     padding-right: 10px;
 }
 
-.entry-area .singles .search_results {
+/* page.php search.php で使用 */
+.main-contents .entry-area .singles .page-title {
+    padding-bottom: 30px;
+}
+
+/* 5日以内に公開された最新記事にのみ付与するclass */
+.main-contents .entry-area .singles .entry-title .bland-new {
+    background-image: url("../image/entry-news-picticon.png");
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 11px;
+    display: inline-block;
+}
+
+.main-contents .entry-area .singles .search_results {
     font-size: 14px;
     text-align: left;
     line-height: 1;
@@ -198,7 +254,7 @@ ol {
     padding-right: 10px;
 }
 
-.singles .entry-data {
+.main-contents .entry-area .singles .entry-data {
     font-style: italic;
     font-weight: normal;
     font-size: 10px;
@@ -209,7 +265,8 @@ ol {
     padding-bottom: 3px;
 }
 
-.singles .entry-datetimes {
+.main-contents .entry-area .singles .entry-datetimes {
+    color: #808080;
     font-size: 10px;
     font-style: italic;
     font-weight: normal;
@@ -219,29 +276,60 @@ ol {
     margin-top: 3px;
 }
 
-.singles .entry {
-    text-align: left;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.main-contents .entry-area .singles .social-links {
+    display: flex;
+    margin: 10px 2px;
 }
 
-.entry-area .entry h2 {
+.main-contents .entry-area .singles .social-links .icon {
+    line-height: 0;
+    padding-right: 10px;
+}
+
+.main-contents .entry-area .singles .entry {
+    text-align: left;
+    padding: 0 4px;
+    margin: 20px 0;
+}
+
+.main-contents .entry-area .singles .entry h2 {
     font-size: 25px;
 }
 
-.entry-area .entry h3 {
-    font-size: 20px;
+.main-contents .entry-area .singles .entry h3 {
+    font-size: 16px;
+    line-height: 1.4em;
 }
 
-.entry-area .entry p {
+.main-contents .entry-area .singles .entry p {
     font-size: 14px;
-    line-height: 1.5;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    line-height: 1.6;
+    padding: 13px 8px;
 }
 
+.main-contents .entry-area .singles .entry ul {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.2;
+    margin: 10px 15px;
+    padding: 13px 8px;
+    border: 1px solid;
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.main-contents .entry-area .singles .entry ul li {
+    padding: 8px 16px;
+}
+
+.main-contents .entry-area .singles .entry ul ul {
+    border: 1px dashed;
+}
+
+
+/* **************************
+   □ comment-area styles 
+**************************** */
 .comment-title {
     font-size: 14px;
     padding-top: 5px;
@@ -256,8 +344,12 @@ ol {
     white-space: pre;
 }
 
-.comment-respond .comment-form .comment-form-comment textarea {
+.comment-respond .comment-form .comment-form-comment textarea, 
+.comment-respond .comment-form .comment-form-author input,
+.comment-respond .comment-form .comment-form-email input,
+.comment-respond .comment-form .comment-form-url input {
     color: #f0f8ff;
+    margin: 4px;
     padding: 2px;
     border-style: solid;
 }
@@ -279,7 +371,107 @@ ol {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
-.item-area {
+
+/* **************************
+   □ pagination styles 
+**************************** */
+.main-contents .entry-area .pagination {
+    color: #f0f8ff;
+    text-align: center;
+}
+
+.main-contents .entry-area .pagination .page_num {
+    display: none;
+}
+
+.main-contents .entry-area .pagination .current {
+    font-weight: bold;
+}
+
+.main-contents .entry-area .pagination .pager {
+    padding: 7px 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main-contents .entry-area .pagination .next,
+.main-contents .entry-area .pagination .prev,
+.main-contents .entry-area .pagination .first,
+.main-contents .entry-area .pagination .last {
+    padding: 7px 10px;
+    margin: 0 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* **************************
+   □ Next post styles 
+**************************** */
+.main-contents .entry-area .post-steps {
+    text-align: center;
+}
+
+.main-contents .entry-area .post-steps .prev-pager {
+    text-align: left;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    float: left;
+}
+
+.main-contents .entry-area .post-steps .next-pager {
+    text-align: right;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    float: right;
+}
+
+
+/* **************************
+   □ Related entries styles 
+**************************** */
+.related-entries {
+    margin: 70px 0;
+}
+
+.related-entries h3 {
+    font-size: 16px;
+}
+
+.related-entries .related-entry {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 10px 0;
+    clear: both;
+}
+
+.related-entries .related-entry-thumb {
+    float: left;
+}
+
+.related-entries .related-entry-content {
+    margin-left: 120px;
+}
+
+.related-entry-title {
+    margin-bottom: 5px;
+}
+
+.related-entry-snippet {
+    margin: 0 0 5px 0;
+}
+
+.related-entry-read {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* **************************
+   □ sidebar-area styles 
+**************************** */
+/* item-area 内の共通クラス */
+/* [サイドバーの各コンテンツの背景色・幅などを確保するコンテナボックス] */
+.main-contents .item-area {
     text-align: left;
     float: right;
     margin-bottom: 100px;
@@ -287,7 +479,7 @@ ol {
     position: relative;
 }
 
-.item-search {
+.main-contents .item-area .item-box {
     color: #f0f8ff;
     font-size: 12px;
     font-weight: bold;
@@ -298,21 +490,36 @@ ol {
     margin-bottom: 20px;
 }
 
-.item-search #form {
+.main-contents .item-area .item-box .item-title {
+    color: #ffd700;  /* gold */
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+    border-bottom: thin solid #f0f8ff;
+}
+
+
+/* item-search (検索ボックス) */
+.main-contents .item-area .item-search .item-title {
+    color: #b0e0e6;  /* powderblue */
+    font-size: 14px;
+}
+
+.main-contents .item-area .item-search form {
     position: relative;
 }
 
-.item-search #s-box {
+.main-contents .item-area .item-search input {
     color: #f0f8ff;
     height: auto;
-    width: 80%;
+    width: 76%;
+    padding: 2px;
     border: solid 1px;
 }
 
-.item-search #s-btn-area {
+.main-contents .item-area .item-search button {
     margin-left: 2px;
     height: auto;
-    width: 18%;
+    width: 20%;
     background: #111111;   /* ボタンの色 */
     border: solid 1.5px #f0f8ff;   /* ボタンの枠の色 */
     border-radius: 4px;   /* ボタンの角の丸み */
@@ -320,50 +527,57 @@ ol {
     font-weight: bold;
 }
 
-.item-category {
-    color: #f0f8ff;
-    font-size: 12px;
-    font-weight: bold;
-    font-family: "メイリオ";
-    text-align: left;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    margin-bottom: 20px;
-}
 
-.item-title {
-    color: #ffcc33;
-    margin-bottom: 10px;
-    padding-bottom: 3px;
-    border-bottom: thin solid #f0f8ff;
-}
-
-.item-category ul {
+/* サイドバーメニュー (検索ボックス以外のサイドバー項目) */
+.main-contents .item-area .menu .item-box ul {
     line-height: 2.0;
     list-style-type: none;
     list-style-position: inside;
     border-style: none;
 }
 
-.item-category ul.children li.cat-item {
+/* カテゴリーリストの子カテゴリー */
+.main-contents .item-area .menu .item-box li.cat-item ul.children li.cat-item {
     line-height: 2.0;
     list-style-type: none;
     list-style-position: inside;
 }
 
-.item-category ul.children li.cat-item::before {
+/* カテゴリーリスト子カテゴリーの単語の頭に付与 */
+.main-contents .item-area .menu .item-box li.cat-item ul.children li.cat-item::before {
     content: "　» ";
 }
 
-.item-category ul.children ul.children li.cat-item::before {
+/* カテゴリーリスト孫カテゴリーの単語の頭に付与 */
+.main-contents .item-area .menu .item-box li.cat-item ul.children li.cat-item ul.children li.cat-item::before {
     content: "　　 »» ";
 }
 
-/* カテゴリー一覧固定ぺージ用の特殊スタイル */
-.entry.item-category {
-    font-size: 15px;
+/* サイドバーのカレンダー */
+.main-contents .item-area .menu .item-box .calendar_wrap .wp-calendar-table {
+    text-align: center;
+    width: 200px;
 }
 
+.main-contents .item-area .menu .item-box .calendar_wrap .wp-calendar-nav {
+    width: 200px;
+}
+
+.main-contents .item-area .menu .item-box .calendar_wrap .wp-calendar-nav .wp-calendar-nav-prev {
+    float: left;
+}
+
+.main-contents .item-area .menu .item-box .calendar_wrap .wp-calendar-nav .wp-calendar-nav-next {
+    float: right;
+}
+
+
+
+
+
+/* ==============================================
+   ■ footer container cascading styles
+================================================ */
 .footer-contents {
     color: #f0f8ff;
     text-align: center;
@@ -379,40 +593,23 @@ ol {
     content: "©";
 }
 
-/* front-page.php 用 */
-.main-area {
-    text-align: left;
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-bottom: 100px;
-}
 
-.main-area .singles .entry-title {
-    font-size: 20px;
-    text-align: left;
-    line-height: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 30px;
-}
 
-.main-area .singles .entry {
-    text-align: left;
-    padding-left: 4px;
-    padding-right: 4px;
-    margin-top: 20px;
-}
 
-.main-area .singles .entry p {
+
+
+/* カテゴリー一覧固定ぺージ用の特殊スタイル */
+.main-contents .entry-area .singles .category-list-special li {
     font-size: 14px;
-    line-height: 1.5;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    font-style: normal;
+    margin: 10px 15px;
+    padding: 8px 16px;
+    border: none;
+    list-style-type: none;
+    list-style-position: inside;
 }
 
-/* page.php 用 */
-.page-title {
-    padding-bottom: 30px;
-}
+
+
+
+

@@ -1,33 +1,47 @@
 <?php
- 
+
+/* テーマの環境設定 */
 function mytheme_setup() {
-	add_theme_support( 'title-tag' );				//タイトルタグを追加
-	add_theme_support( 'automatic-feed-links' );			//自動フィードリンクの追加
-	add_theme_support( 'post-thumbnails' );				//投稿サムネイルの有効化
-	register_nav_menu( 'header-navigation', 'Header Navigation' );	//ナビゲーションメニューの有効化
-	if ( !isset( $content_width ) ) $content_width = 600;	//コンテンツの横幅
-	add_theme_support( 'custom-background' );		//カスタム背景の有効化
-	add_theme_support( 'custom-header', array(		//カスタムヘッダーの有効化
-		// ヘッダー画像の横幅
-		'width' => 1200,
-		// ヘッダー画像の縦幅
-		'height' => 198,
-	) );
+	add_theme_support( 'automatic-feed-links' );        //　自動でフィードリンクが追加されるようにする
+	add_theme_support( 'post-formats', array(
+        'aside',
+        'image',
+        'video',
+        'quote',
+        'link',
+    ) );                                                // 投稿フォーマット
+    add_theme_support( 'html5', array(
+        'search-form',
+        'comment-form',
+        'comment-list',
+        'gallery',
+        'caption',
+    ) );                                                // WordPress自動発行のHTMLタグをHTML5化
+    add_theme_support( 'title-tag' );                   // タイトルタグを追加
+    add_theme_support( 'menus' );                       // ナビゲーションメニューを追加
+    add_theme_support( 'post-thumbnails' );
+    add_image_size( 'thumbnail-100', 100, 100, true );
+    add_image_size( 'list-thumbnail', 360, 240, true );
+    add_image_size( 'single-thumbnail', 720, 480, true );
 }
 add_action( 'after_setup_theme', 'mytheme_setup' );
- 
+
+
+/* WordPressテーマにウィジェット機能を追加する */
 function my_theme_widgets_init() {
   register_sidebar( array(
     'name' => 'Main Sidebar',
     'id' => 'sidebar-1',
-    'before_widget' => '<div class="item-category">',
+    'before_widget' => '<div class="item-box">',
     'after_widget' => '</div>',
     'before_title' => '<p class="item-title">',
     'after_title' => '</p>',
-  ) );
+  ) );                                                  // before～、after～でサイドバーのCSSを指定
 }
 add_action( 'widgets_init', 'my_theme_widgets_init' );
  
+
+/* テーマ個別の機能を実装するためのファンクション */
 function mytheme_scripts() {
 	//スタイルシートを読み込み
 	wp_enqueue_style( 'mytheme-style', get_stylesheet_uri() );
@@ -38,15 +52,28 @@ function mytheme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'mytheme_scripts' );
 
+
+/* カスタム投稿タイプ */
+function my_theme_custom_init() {
+    $args = array(
+      'supports' => array( 'title','editor','thumbnail' )
+    );
+    
+    register_post_type( 'event', $args );
+}
+add_action( 'custom_init', 'my_theme_custom_init' );
+
+
+/* パンくずリストを作成するファンクション */
 function breadcrumbs( $args = array() ){
 	global $post;
 	$str ='';
 	$defaults = array(
 		'id' => "breadcrumbs",
 		'home' => "Top",
-        'whatsnew' => "記事一覧",
+        'whatsnew' => "記事一覧 (Top Page)",
 		'search' => "で検索した結果",
-		'tag' => "タグ",
+		'tag' => "タグ",
 		'author' => "投稿者",
 		'notfound' => "404 Not found",
 		'separator' => '&nbsp; &raquo; &nbsp;'
@@ -253,14 +280,6 @@ function get_youngest_tax( $taxes, $mytaxonomy ){
 	return $youngest;
 }
 
-// アイキャッチ画像を有効にする。
-add_theme_support('post-thumbnails');
-
-register_post_type(
-    'event',
-    // 'supports'に'thumbnail'を追記
-    array('supports' => array('title','editor','thumbnail'))
-);
 
 /* カンマ区切りでカテゴリーリンクを表示する関数 */
 function get_post_category_link($post_id) {
@@ -268,19 +287,124 @@ function get_post_category_link($post_id) {
     $my_cats = get_the_category($post_id);
       
     if ($my_cats) {
-      
         $cats_cnt = 0;
         foreach ($my_cats as $my_cat) {
               
             if ($cats_cnt > 0) {
                 echo ', ';
             }
-  
             $cat_link = get_category_link($my_cat->cat_ID);
-  
+
             echo '<a href="' . $cat_link . '">' . $my_cat->name .'</a>';
-              
             $cats_cnt++;
         }
     } 
+}
+
+
+/* ナビゲーションメニューの li 要素の改行を無効化する */
+add_filter( 'wp_nav_menu', 'chomp_wp_nav_menu' );
+function chomp_wp_nav_menu( $nav ) {
+    $nav = str_replace( "\r\n", "<!--\r\n-->", $nav );
+    $nav = str_replace( "\n", "<!--\n-->", $nav );
+    $nav = str_replace( "\r", "<!--\r-->", $nav );
+    return $nav;
+}
+
+
+/**
+* quote : https://wemo.tech/978 - WordPressでページャー（ページネーション）をプラグインなしで実装 | WEMO
+* author : https://twitter.com/ddryo_loos (twitter)
+* ページネーション出力関数
+* $paged : 現在のページ
+* $pages : 全ページ数
+* $range : 左右に何ページ表示するか
+* $show_only : 1ページしかない時に表示するかどうか
+*/
+function pagination( $pages, $paged, $range = 2, $show_only = false ) {
+
+    $pages = ( int ) $pages;    //float型で渡ってくるので明示的に int型 へ
+    $paged = $paged ?: 1;       //get_query_var('paged')をそのまま投げても大丈夫なように
+
+    //表示テキスト
+    $text_first   = "« 最初へ";
+    $text_before  = "‹ 前へ";
+    $text_next    = "次へ ›";
+    $text_last    = "最後へ »";
+
+    if ( $show_only && $pages === 1 ) {
+        // １ページのみで表示設定が true の時
+        echo '<div class="pagination"><span class="current pager">1</span></div>';
+        return;
+    }
+
+    if ( $pages === 1 ) return;    // 1ページのみで表示設定もない場合
+
+    if ( 1 !== $pages ) {
+        // 2ページ以上の時
+        echo '<div class="pagination"><span class="page_num">Page ', $paged ,' of ', $pages ,'</span><br>';
+        if ( $paged > $range + 1 ) {
+            // 「最初へ」 の表示
+            echo '<a href="', get_pagenum_link(1) ,'" class="first">', $text_first ,'</a>';
+        }
+        if ( $paged > 1 ) {
+            // 「前へ」 の表示
+            echo '<a href="', get_pagenum_link( $paged - 1 ) ,'" class="prev">', $text_before ,'</a>';
+        }
+        for ( $i = 1; $i <= $pages; $i++ ) {
+
+            if ( $i <= $paged + $range && $i >= $paged - $range ) {
+                // $paged +- $range 以内であればページ番号を出力
+                if ( $paged === $i ) {
+                    echo '<span class="current pager">', $i ,'</span>';
+                } else {
+                    echo '<a href="', get_pagenum_link( $i ) ,'" class="pager">', $i ,'</a>';
+                }
+            }
+
+        }
+        if ( $paged < $pages ) {
+            // 「次へ」 の表示
+            echo '<a href="', get_pagenum_link( $paged + 1 ) ,'" class="next">', $text_next ,'</a>';
+        }
+        if ( $paged + $range < $pages ) {
+            // 「最後へ」 の表示
+            echo '<a href="', get_pagenum_link( $pages ) ,'" class="last">', $text_last ,'</a>';
+        }
+        echo '</div>';
+    }
+}
+
+
+/* カテゴリーの取得 */
+function get_categories_for_entry( $post_id ) {
+    $html_category = '';
+    $separator = ', ';
+    $categories = get_the_category( $post_id );
+    
+    foreach ( $categories as $category ) {
+        $html_category .= '<span><a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a></span>' . $separator;
+    }
+    
+    $html_category = rtrim( $html_category, $separator );
+    
+    return $html_category;
+}
+
+
+/* 更新日時の取得、投稿日時から遠い場合だけ出力する */
+function the_last_updated_for_entry( $post_id ) {
+    $last_updated_date = '';
+    $post_date = new DateTime( get_the_time( 'Y-m-d H:i:s', $post_id ) );
+    $update_date = new DateTime( get_the_modified_date( 'Y-m-d H:i:s', $post_id ) );
+    $interval = $update_date->diff( $post_date );
+    
+    if ( $interval->format('%d') > 0 ) {
+        $last_updated_date = $update_date->format( 'Y-m-d H:i:s' ) . ' last updated.';
+    }
+    else {
+        $last_updated_date = '';
+    }
+    
+    return $last_updated_date;
 }
