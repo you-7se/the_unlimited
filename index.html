@@ -8,8 +8,8 @@
 
     </head>
     <body>
-        <div id="background-contents">
-            <div id="front-contents">
+        <div id="BGImg" class="background-contents">
+            <div id="MainContainer" class="front-contents">
                 <p class="chip1"><a href="0000/power.html">No.0000 - 広報室</a></p>
                 <p class="chip2"><a href="1000/gaia.html">No.1000 - 無限なる思想</a></p>
                 <p class="chip3"><a href="10000/deusexmachina.html">No.10000 - プログラミング</a></p>
@@ -19,7 +19,7 @@
         </div>
 
         <script>
-            var bg_img = document.getElementById('background-contents');
+            var bg_img = document.getElementById('BGImg');
             var rotate_randval = Math.floor(Math.random() * 360);
             var hue_rotate_val = "hue-rotate(" + String(rotate_randval) + "deg)";
             bg_img.style.filter = hue_rotate_val;
