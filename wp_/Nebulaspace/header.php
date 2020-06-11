@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <title>ブログ | Sirius X</title>
         <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/ress.css" type="text/css">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css" type="text/css">
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/custom-design.css" type="text/css">
         <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
         <?php wp_enqueue_script('jquery'); ?>
         <?php wp_head(); ?>
-        
-        <?php 
+
+        <?php
             // 【JavaScriptを使用】 ナビゲーションメニューバーを固定
             if ( is_admin_bar_showing() ) {
                 $add_class_value = "nav.addClass('fixed-admin'); head.addClass('fixed');";
@@ -45,18 +45,17 @@
         <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
         <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
         <!-- ここまで -->
-        
+
         <div id="naviMenu" class="navigation-menu-bar">
             <!-- ナビゲーションメニューを追加する -->
             <?php wp_nav_menu(); ?>
         </div>
-        
+
         <div id="headerArea" class="header-contents">
             <h1 class="blog-title"><?php bloginfo('name'); ?></h1>
             <p class ="blog-expl"><?php bloginfo('description'); ?></p>
         </div>
-        
+
         <div class="breads">
             <?php breadcrumbs(); ?>
         </div>
-            

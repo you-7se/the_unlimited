@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>無限なる思想 - UNLIMITED LOOP "SQUARE ROOT 1"</title>
+        <link rel="icon" type="image/x-icon" href="./favicon.ico/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="./favicon.ico/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
         <link rel="stylesheet" href="css/ress.css" type="text/css">
         <link rel="stylesheet" href="css/index.css" type="text/css">
 
@@ -10,19 +13,36 @@
     <body>
         <div id="BGImg" class="background-contents">
             <div id="MainContainer" class="front-contents">
-                <p class="chip1"><a href="0000/power.html">No.0000 - 広報室</a></p>
-                <p class="chip2"><a href="1000/gaia.html">No.1000 - 無限なる思想</a></p>
-                <p class="chip3"><a href="10000/deusexmachina.html">No.10000 - プログラミング</a></p>
-                <p class="chip4"><a href="20000/prophet.html">No.20000 - ライトノベル集</a></p>
+                <table class="contents-menu-box">
+                    <tbody>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <h3><a href="diary">Sirius X (u7's diary)</a><br></h3>
+                                <p class="descriptions">
+                                    ウェブサイトオーナーの日誌。<br>
+                                    ウェブサイトの更新情報もこちらから。
+                                </p>
 
+                                <h3 class="setting">No.0000 - 無限なる思想 (コンテンツ準備中)</p>
+                                <h3 class="setting">No.1000 - プログラミング (コンテンツ準備中)</p>
+                                <h3 class="setting">No.2000 - ライトノベル集 (コンテンツ準備中)</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <script>
+        <script type="text/javascript">
+            <!--
+            /* 以下のスクリプトを実行する事により、あなたが現在閲覧しているぺージの背景カラー色相がページ読み込みで都度変更されます。このソースは自由に加工・転載可能です */
             var bg_img = document.getElementById('BGImg');
             var rotate_randval = Math.floor(Math.random() * 360);
             var hue_rotate_val = "hue-rotate(" + String(rotate_randval) + "deg)";
             bg_img.style.filter = hue_rotate_val;
+            //-->
         </script>
     </body>
 </html>
