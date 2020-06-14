@@ -49,13 +49,13 @@ a:active {
     background-color: #000000;
     background-image: url("../image/index_backgroundimg.png");
     background-repeat: no-repeat;
-    background-position: left bottom;
-    background-size: cover;
-    filter: hue-rotate(0deg); /* Dynamic columns */
-    height: 100vh;
+    background-position: left top;
+    background-size: contain;
+    filter: hue-rotate(0deg);  /* Dynamic columns */
+    height: 500px;
 }
 
-.background-contents .front-contents {
+.front-contents {
     color: #f0f8ff;
     font-size: 18px;
     font-family: none;
@@ -63,23 +63,22 @@ a:active {
     text-align: left;
     filter: hue-rotate(100deg);
     margin: 0 auto;
-    padding: 460px 10px 0 0;
-    border-right: 1px solid #ffffff;
+    padding-right: 10px;
     width: 1000px;
 }
 
-.background-contents .front-contents .contents-menu-box {
+.front-contents .contents-menu-box {
     table-layout: fixed;
     width: 100%;
 }
 
-.background-contents .front-contents .contents-menu-box tr td h3 {
+.front-contents .contents-menu-box tr td h3 {
     font-size: 18px;
     font-weight: normal;
     padding-top: 2.0em;
 }
 
-.background-contents .front-contents .contents-menu-box tr td p.descriptions {
+.front-contents .contents-menu-box tr td p.descriptions {
     font-size: 14px;
     line-height: 1.3em;
     padding-left: 30px;

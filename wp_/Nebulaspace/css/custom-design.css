@@ -169,8 +169,8 @@ ol {
 .breads {
     color: #f0f8ff;
     font-size: 13px;
-    margin: 10px auto;
-    width: 960px;
+    margin: 10px 160px;
+    width: auto;
 }
 
 .breads ul {
@@ -193,13 +193,13 @@ ol {
 ================================================ */
 .main-contents {
     text-align: center;
-    margin: 10px auto;
-    width: 1010px;
+    margin: 10px 140px;
+    width: auto;
 }
 
 
 /* **************************
-   □ entry-area styles 
+   □ entry-area styles
 **************************** */
 .main-contents .entry-area {
     text-align: left;
@@ -328,7 +328,7 @@ ol {
 
 
 /* **************************
-   □ comment-area styles 
+   □ comment-area styles
 **************************** */
 .comment-title {
     font-size: 14px;
@@ -344,7 +344,7 @@ ol {
     white-space: pre;
 }
 
-.comment-respond .comment-form .comment-form-comment textarea, 
+.comment-respond .comment-form .comment-form-comment textarea,
 .comment-respond .comment-form .comment-form-author input,
 .comment-respond .comment-form .comment-form-email input,
 .comment-respond .comment-form .comment-form-url input {
@@ -373,7 +373,7 @@ ol {
 
 
 /* **************************
-   □ pagination styles 
+   □ pagination styles
 **************************** */
 .main-contents .entry-area .pagination {
     color: #f0f8ff;
@@ -405,7 +405,7 @@ ol {
 
 
 /* **************************
-   □ Next post styles 
+   □ Next post styles
 **************************** */
 .main-contents .entry-area .post-steps {
     text-align: center;
@@ -427,7 +427,7 @@ ol {
 
 
 /* **************************
-   □ Related entries styles 
+   □ Related entries styles
 **************************** */
 .related-entries {
     margin: 70px 0;
@@ -467,7 +467,7 @@ ol {
 
 
 /* **************************
-   □ sidebar-area styles 
+   □ sidebar-area styles
 **************************** */
 /* item-area 内の共通クラス */
 /* [サイドバーの各コンテンツの背景色・幅などを確保するコンテナボックス] */
@@ -608,8 +608,3 @@ ol {
     list-style-type: none;
     list-style-position: inside;
 }
-
-
-
-
-
